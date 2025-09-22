@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cari Judul Buku</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #00796b;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    #hasil {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔍 Pencarian Judul Buku</h2>
+    <input type="text" id="inputJudul" placeholder="Masukkan judul buku...">
+    <br>
+    <button onclick="cariJudul()">Cari</button>
+    <p id="hasil"></p>
+    <div class="footer">STIKES Panti Waluya Malang • PKL Puskesmas Kepanjen</div>
+  </div>
+
+  <script>
+    const judulBuku = [
+      "Manajemen Informasi Kesehatan",
+      "Dasar Epidemiologi",
+      "Sistem Informasi Puskesmas",
+      "Analisis Rekam Medis",
+      "Kode ICD-10 dan ICD-9-CM"
+    ];
+
+    function cariJudul() {
+      const input = document.getElementById("inputJudul").value.trim();
+      let index = 0;
+      let ditemukan = false;
+
+      while (index < judulBuku.length) {
+        if (judulBuku[index].toLowerCase() === input.toLowerCase()) {
+          document.getElementById("hasil").innerHTML =
+            `✅ Judul ditemukan di indeks ke-${index}: <strong>${judulBuku[index]}</strong>`;
+          ditemukan = true;
+          break;
+        }
+        index++;
+      }
+
+      if (!ditemukan) {
+        document.getElementById("hasil").innerHTML =
+          "❌ Judul tidak ditemukan dalam daftar.";
+      }
+    }
+  </script>
+</body>
+</html>
